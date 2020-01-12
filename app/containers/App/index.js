@@ -11,7 +11,16 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
+import Login from 'containers/Login/Loadable';
+import StudentDetails from 'containers/StudentDetails/Loadable';
+import Batches from 'containers/Batches/Loadable';
+import Student from 'containers/Student/Loadable';
+import StudentClassRoom from 'containers/StudentClassroom/Loadable';
+
+import Class from 'containers/Class/Loadable';
+
+
+
 import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
@@ -30,21 +39,15 @@ const AppWrapper = styled.div`
 
 export default function App() {
   return (
-    <AppWrapper>
-      <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
-      >
-        <meta name="description" content="A React.js Boilerplate application" />
-      </Helmet>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
-      <Footer />
-      <GlobalStyle />
-    </AppWrapper>
+    <Switch>
+      <Route exact path="/" component={Login} />
+      <Route exact path="/batches" component={Batches} />
+      <Route exact path="/studentDetail" component={StudentDetails} />
+      <Route exact path="/student" component={Student} />
+      <Route exact path="/classroom" component={Class} />
+      <Route exact path="/studentClassRoom" component={StudentClassRoom} />
+
+      <Route path="" component={NotFoundPage} />
+    </Switch>
   );
 }
